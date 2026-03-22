@@ -3,6 +3,8 @@
 :root {
   --background: #000000;
   --foreground: #ffffff;
+  --bg-gradient-start: rgba(25, 25, 25, 1);
+  --bg-gradient-end: rgba(0, 0, 0, 1);
 }
 
 @theme inline {
@@ -13,6 +15,7 @@
   --animate-fade-in-up: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-move-bg: moveBackground 15s ease-in-out infinite alternate;
   --animate-blink: blink 1s step-end infinite;
+  --animate-float: float 4s ease-in-out infinite;
 
   @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(16px); }
@@ -25,6 +28,10 @@
   @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
   }
 }
 
@@ -45,7 +52,7 @@ body::before {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle at 50% 50%, rgba(25, 25, 25, 1) 0%, rgba(0, 0, 0, 1) 50%);
+  background: radial-gradient(circle at 50% 50%, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 50%);
   background-size: 400% 400%;
   animation: var(--animate-move-bg);
   z-index: -1;

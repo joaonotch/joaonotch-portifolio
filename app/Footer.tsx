@@ -16,7 +16,7 @@ export function Footer() {
             href="https://github.com/joaonotch"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#8b949e] hover:text-white hover:-translate-y-1 transition-all duration-300"
+            className="text-[#8b949e] hover:text-white hover:-translate-y-1 transition-transform duration-300"
             aria-label="GitHub"
           >
             <Github className="w-5 h-5" />
@@ -25,7 +25,7 @@ export function Footer() {
             href="https://instagram.com/joaonotch"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#8b949e] hover:text-white hover:-translate-y-1 transition-all duration-300"
+            className="text-[#8b949e] hover:text-white hover:-translate-y-1 transition-transform duration-300"
             aria-label="Instagram"
           >
             <Instagram className="w-5 h-5" />
@@ -34,7 +34,7 @@ export function Footer() {
             href="https://discord.com/users/1376385420069175366"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#8b949e] hover:text-white hover:-translate-y-1 transition-all duration-300"
+            className="text-[#8b949e] hover:text-white hover:-translate-y-1 transition-transform duration-300"
             aria-label="Discord"
           >
             {/* Ícone customizado do Discord alinhado à estética Lucide (Stroke/Outline) */}

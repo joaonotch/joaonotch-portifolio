@@ -10,7 +10,7 @@ const spaceMono = Space_Mono({
 
 export const metadata: Metadata = {
   title: "João Victor | Developer",
-  description: "Portfólio de João Victor, Desenvolvedor Back-End",
+  description: "Portifolio Pessoal | Back-end developer, ",
 };
 
 export default function RootLayout({
@@ -23,7 +23,9 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${spaceMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-mono bg-black text-white">{children}</body>
+      <body className="min-h-full flex flex-col font-mono">
+        {children}
+      </body>
     </html>
   );
 }

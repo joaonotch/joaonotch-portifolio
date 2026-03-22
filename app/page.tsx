@@ -22,7 +22,7 @@ interface LinkItem {
 const projects: Project[] = [
   {
     title: "Yami Economy",
-    description: "Bot de entretenimento para Discord com economia virtual inteligente, ranking competitivo e mecânicas que transformam atividade em recompensa real dentro do servidor.",
+    description: "Bot de entretenimento para Discord com economia virtual inteligente, ranking competitivo e mecânicas legais!",
     year: "Jan - Atual",
     link: "https://github.com/joaonotch/YamiEconomy",
     tags: ["Javascript", "Node.js", "Discord.js"],
@@ -143,7 +143,7 @@ function ProjectCard({ project }: { project: Project }) {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-4 py-2 text-sm bg-transparent border-2 border-[#a3e635] text-[#a3e635] font-bold rounded-lg hover:bg-[#a3e635] hover:text-[#0d1117] transition-all duration-300 group/btn"
+              className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-4 py-2 text-sm bg-transparent border-2 border-[#a3e635] text-[#a3e635] font-bold rounded-lg hover:bg-[#a3e635] hover:text-[#0d1117] group/btn"
             >
               Visualizar projeto
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform duration-300">
@@ -172,7 +172,7 @@ export default function Home() {
       if (currentIndex <= fullName.length) {
         setTypedName(fullName.slice(0, currentIndex));
         currentIndex++;
-        timeout = setTimeout(type, 100); // Velocidade rápida da digitação (80ms)
+        timeout = setTimeout(type, 70); // Velocidade rápida da digitação (80ms)
       }
     };
 
@@ -259,25 +259,39 @@ export default function Home() {
 
         {/* Projetos Section */}
         <section className="mb-24">
-          <h3 className="text-lg font-bold mb-8 text-white border-b border-white/20 pb-2 inline-block">Projetos</h3>
+          <h3 className="text-lg font-bold mb-8 text-white border-b border-white/20 pb-2 inline-block">[projetos]</h3>
           <ul className={`grid gap-4 ${projects.length > 1 ? "grid-cols-1 md:grid-cols-2" : "grid-cols-1"}`}>
-            {projects.map((project) => (
+            {projects.slice(0, 4).map((project) => (
               <ProjectCard key={project.title} project={project} />
             ))}
           </ul>
+          
+          {projects.length > 4 && (
+            <div className="mt-10 flex justify-center">
+              <a
+                href="https://github.com/joaonotch?tab=repositories"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 px-6 py-3 text-sm font-bold text-white/70 bg-[#0d1117] border border-[#30363d] rounded-full hover:text-white hover:border-[#a3e635]/50 hover:shadow-[0_0_15px_-5px_rgba(163,230,53,0.3)] transition-all duration-300"
+              >
+                Ver todos os meus projetos
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transform group-hover:translate-x-1 transition-transform duration-300"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+              </a>
+            </div>
+          )}
         </section>
 
         {/* Stack Section */}
         <section className="mb-24">
-          <h3 className="text-lg font-bold mb-6 text-white border-b border-white/20 pb-2 inline-block">Stack</h3>
+          <h3 className="text-lg font-bold mb-6 text-white border-b border-white/20 pb-2 inline-block">[stack]</h3>
           <div className="flex flex-wrap gap-x-3 gap-y-3">
             {stack.map((tech) => (
               <div
                 key={tech.name}
-                className="group flex items-center gap-2 px-4 py-2 rounded-full bg-[#0d1117] border border-[#30363d] hover:border-[#a3e635]/50 hover:shadow-[0_0_15px_-5px_rgba(163,230,53,0.3)] transition-all duration-300 cursor-default"
+                className="group flex items-center gap-2 px-4 py-2 rounded-full bg-[#0d1117] border border-[#30363d] hover:border-[#a3e635]/50 hover:shadow-[0_0_15px_-5px_rgba(163,230,53,0.3)] transition-shadow duration-300 cursor-default"
               >
-                <img src={tech.icon} alt={`${tech.name} icon`} className="w-4 h-4 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" />
-                <span className="text-sm font-sans text-[#e6edf3]/90 group-hover:text-white transition-colors duration-300">{tech.name}</span>
+                <img src={tech.icon} alt={`${tech.name} icon`} className="w-4 h-4 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-transform duration-300" />
+                <span className="text-sm font-sans text-[#e6edf3]/90 group-hover:text-white">{tech.name}</span>
               </div>
             ))}
           </div>
@@ -285,7 +299,7 @@ export default function Home() {
 
         {/* Contato Section */}
         <section>
-          <h3 className="text-lg font-bold mb-6 text-white border-b border-white/20 pb-2 inline-block">Contato</h3>
+          <h3 className="text-lg font-bold mb-6 text-white border-b border-white/20 pb-2 inline-block">[contato]</h3>
           <div className="flex flex-wrap gap-4">
             {contacts.map((contact) => (
               <a
@@ -293,12 +307,12 @@ export default function Home() {
                 href={contact.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0d1117] border border-[#30363d] hover:border-[#a3e635]/50 hover:shadow-[0_0_15px_-5px_rgba(163,230,53,0.3)] transition-all duration-300"
+                className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0d1117] border border-[#30363d] hover:border-[#a3e635]/50 hover:shadow-[0_0_15px_-5px_rgba(163,230,53,0.3)] transition-shadow duration-300"
               >
-                <span className="text-white/60 group-hover:text-[#a3e635] group-hover:scale-110 transition-all duration-300">
+                <span className="text-white/60 group-hover:text-[#a3e635] group-hover:scale-110 transition-transform duration-300">
                   {contact.icon}
                 </span>
-                <span className="text-sm font-sans text-[#e6edf3]/90 group-hover:text-white transition-colors duration-300">
+                <span className="text-sm font-sans text-[#e6edf3]/90 group-hover:text-white">
                   {contact.label}
                 </span>
               </a>
