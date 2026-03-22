@@ -11,6 +11,9 @@ const spaceMono = Space_Mono({
 export const metadata: Metadata = {
   title: "João Victor | Developer",
   description: "Portifolio Pessoal | Back-end developer, ",
+  icons: {
+    icon: "/logo.svg",
+  },
 };
 
 export default function RootLayout({
