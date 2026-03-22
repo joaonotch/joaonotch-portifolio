@@ -2,28 +2,39 @@
 
 import { useState, useEffect } from "react";
 import { Footer } from "./Footer";
+import { Mail, Github } from "lucide-react";
 
 interface Project {
   title: string;
   description: string;
   year: string;
-  link: string;
+  link?: string;
   tags: string[];
+  disabled?: boolean;
 }
 
 interface LinkItem {
   label: string;
   href: string;
+  icon: React.ReactNode;
 }
 
 const projects: Project[] = [
   {
     title: "Yami Economy",
-    description: "Bot de entretenimento para Discord com um sistema de economia fictícia estruturado.",
+    description: "Bot de entretenimento para Discord com economia virtual inteligente, ranking competitivo e mecânicas que transformam atividade em recompensa real dentro do servidor.",
     year: "Jan - Atual",
     link: "https://github.com/joaonotch/YamiEconomy",
     tags: ["Javascript", "Node.js", "Discord.js"],
-  }
+  },
+  {
+    title: "BioElo",
+    description: "O BioElo é um ecossistema digital de inteligência botânica e regeneração urbana. Ele se materializa como um aplicativo móvel de Ciência Cidadã",
+    year: "Coming Soon...",
+    link: "",
+    tags: ["Typescript", "React Native", "SQLite"],
+    disabled: true,
+  },
 ];
 
 interface StackItem {
@@ -60,9 +71,27 @@ const stack: StackItem[] = [
 ];
 
 const contacts: LinkItem[] = [
-  { label: "email", href: "mailto:joaonotch@proton.me" },
-  { label: "github", href: "https://github.com/joaonotch" },
-  { label: "linkedin", href: "https://linkedin.com/in/joaovictor" },
+  { 
+    label: "Email", 
+    href: "mailto:joaonotch@proton.me",
+    icon: <Mail className="w-4 h-4" />
+  },
+  { 
+    label: "Discord", 
+    href: "https://discord.com/users/1376385420069175366",
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M9 12h.01" />
+        <path d="M15 12h.01" />
+        <path d="M7.5 4.57c2-1.07 4.5-1.07 6.5 0a12.8 12.8 0 0 1 5.5 13A12.8 12.8 0 0 1 14 20.5c-1.33-1-3-1-4.5 0a12.8 12.8 0 0 1-5.5-2.93A12.8 12.8 0 0 1 2.5 7.57a12.8 12.8 0 0 1 5-3z" />
+      </svg>
+    )
+  },
+  { 
+    label: "Github", 
+    href: "https://github.com/joaonotch",
+    icon: <Github className="w-4 h-4" />
+  },
 ];
 
 // Componente do Card de Projeto com Borda Animada
@@ -101,18 +130,28 @@ function ProjectCard({ project }: { project: Project }) {
 
         {/* Botão de Visualizar */}
         <div className="mt-2 pt-4 border-t border-[#30363d]">
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-4 py-2 text-sm bg-transparent border-2 border-[#a3e635] text-[#a3e635] font-bold rounded-lg hover:bg-[#a3e635] hover:text-[#0d1117] transition-all duration-300 group/btn"
-          >
-            Visualizar projeto
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform duration-300">
-              <line x1="7" y1="17" x2="17" y2="7"></line>
-              <polyline points="7 7 17 7 17 17"></polyline>
-            </svg>
-          </a>
+          {project.disabled ? (
+            <span className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-4 py-2 text-sm bg-transparent border-2 border-[#30363d] text-[#8b949e] font-bold rounded-lg cursor-not-allowed opacity-60">
+              Visualizar projeto
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </span>
+          ) : (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-4 py-2 text-sm bg-transparent border-2 border-[#a3e635] text-[#a3e635] font-bold rounded-lg hover:bg-[#a3e635] hover:text-[#0d1117] transition-all duration-300 group/btn"
+            >
+              Visualizar projeto
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform duration-300">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+          )}
         </div>
       </div>
     </li>
@@ -247,16 +286,21 @@ export default function Home() {
         {/* Contato Section */}
         <section>
           <h3 className="text-lg font-bold mb-6 text-white border-b border-white/20 pb-2 inline-block">Contato</h3>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap gap-4">
             {contacts.map((contact) => (
               <a
                 key={contact.label}
                 href={contact.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-base font-normal text-white/70 underline underline-offset-4 decoration-white/20 hover:text-white hover:decoration-white/80 transition-all duration-300"
+                className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0d1117] border border-[#30363d] hover:border-[#a3e635]/50 hover:shadow-[0_0_15px_-5px_rgba(163,230,53,0.3)] transition-all duration-300"
               >
-                {contact.label}
+                <span className="text-white/60 group-hover:text-[#a3e635] group-hover:scale-110 transition-all duration-300">
+                  {contact.icon}
+                </span>
+                <span className="text-sm font-sans text-[#e6edf3]/90 group-hover:text-white transition-colors duration-300">
+                  {contact.label}
+                </span>
               </a>
             ))}
           </div>
