@@ -222,7 +222,7 @@ export default function Home() {
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-lime-500"></span>
               </span>
               <span className="text-lime-500 font-mono text-sm font-bold tracking-widest drop-shadow-[0_0_8px_rgba(132,204,22,0.5)]">ONLINE</span>
-            </div>
+          </div>
           </div>
 
           {/* Seção de Texto (Direita) */}
@@ -247,7 +247,7 @@ export default function Home() {
             </h1>
 
             <p className="text-lg text-white/60 leading-relaxed max-w-xl mx-auto md:mx-0 md:text-left text-pretty mb-8">
-              Desenvolvedor Back-End, Cristão e Líder aos 16 anos. Focado em arquitetura escalável e impacto com propósito.
+              Desenvolvedor Back-End, Cristão, 16 anos. Focado em arquitetura escalável e impacto com propósito.
             </p>
 
             <div className="flex items-center justify-center md:justify-start gap-2 text-white/50 font-mono text-sm mt-auto">
