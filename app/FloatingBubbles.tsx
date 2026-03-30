@@ -18,8 +18,12 @@ export function FloatingBubbles() {
   const BASE_OPACITY = 0.2; // <- Mude esse valor para deixar as bolhas mais fracas ou mais fortes!
 
   useEffect(() => {
+    // Detecta se é mobile para reduzir a quantidade de bolhas e melhorar a performance de rolagem
+    const isMobile = window.innerWidth < 768;
+    const bubbleCount = isMobile ? 25 : 100;
+
     // Gerado apenas no lado do cliente (navegador) para as posições aleatórias não quebrarem o servidor
-    const newBubbles = Array.from({ length: 100 }).map((_, i) => ({
+    const newBubbles = Array.from({ length: bubbleCount }).map((_, i) => ({
       id: i,
       size: Math.random() * 4 + 2, // Tamanho entre 2px e 6px (bolhas pequenas)
       left: Math.random() * 100, // Posição horizontal na tela (0% a 100%)
@@ -35,7 +39,7 @@ export function FloatingBubbles() {
       {bubbles.map((bubble) => (
         <div
           key={bubble.id}
-          className="absolute rounded-full bg-[#a3e635] shadow-[0_0_8px_1px_rgba(163,230,53,0.5)]"
+          className="absolute rounded-full bg-[#a3e635] shadow-[0_0_8px_1px_rgba(163,230,53,0.5)] transform-gpu will-change-transform"
           style={{
             width: `${bubble.size}px`,
             height: `${bubble.size}px`,

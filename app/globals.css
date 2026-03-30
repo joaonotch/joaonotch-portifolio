@@ -41,7 +41,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
-  overflow-x: hidden;
 }
 
 /* Animação de fundo bem legal (gradiente dark sutil em movimento) */

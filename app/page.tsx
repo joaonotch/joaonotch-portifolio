@@ -99,7 +99,7 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <li className="group relative overflow-hidden rounded-xl bg-[#30363d] p-[1px] hover:shadow-[0_0_20px_-5px_rgba(163,230,53,0.3)] transition-shadow duration-500">
       {/* Efeito de Borda Animada (Conic Gradient Giratório) */}
-      <div className="absolute top-1/2 left-1/2 h-[300%] w-[150%] -translate-x-1/2 -translate-y-1/2 animate-spin [animation-duration:4s] bg-[conic-gradient(from_0deg,transparent_75%,#a3e635_100%)] opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#a3e635_0%,#30363d_50%,#a3e635_100%)] opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
 
       {/* Container do Conteúdo (Máscara Ultra-Dark central) */}
       <div className="relative z-10 flex flex-col bg-[#0d1117] rounded-xl p-4 md:p-5 gap-3 w-full h-full">
@@ -204,8 +204,8 @@ export default function Home() {
           <div className="flex flex-col items-center shrink-0">
             <div className="relative w-32 h-32 md:w-40 md:h-40 flex items-center justify-center">
               {/* Efeitos do anel giratório verde */}
-              <div className="absolute inset-0 rounded-full animate-spin [animation-duration:3s] bg-[conic-gradient(from_0deg,transparent_70%,#84cc16_100%)] opacity-70 blur-md"></div>
-              <div className="absolute inset-0 rounded-full animate-spin [animation-duration:3s] bg-[conic-gradient(from_0deg,transparent_70%,#84cc16_100%)]"></div>
+              <div className="absolute inset-0 rounded-full animate-spin [animation-duration:3s] bg-[conic-gradient(from_0deg,transparent_70%,#84cc16_100%)] opacity-70 blur-md transform-gpu will-change-transform"></div>
+              <div className="absolute inset-0 rounded-full animate-spin [animation-duration:3s] bg-[conic-gradient(from_0deg,transparent_70%,#84cc16_100%)] transform-gpu will-change-transform"></div>
               
               {/* Container da foto por cima do efeito */}
               <div className="w-[calc(100%-6px)] h-[calc(100%-6px)] rounded-full overflow-hidden relative z-10 bg-[#0a0a0a]">
@@ -247,7 +247,7 @@ export default function Home() {
             </h1>
 
             <p className="text-lg text-white/60 leading-relaxed max-w-xl mx-auto md:mx-0 md:text-left text-pretty mb-8">
-              Desenvolvedor Back-End, Cristão, 16 anos. Focado em arquitetura escalável e impacto com propósito.
+              Desenvolvedor Back-End | tenho 16 anos. Focado em arquitetura escalável e impacto com propósito.
             </p>
 
             <div className="flex items-center justify-center md:justify-start gap-2 text-white/50 font-mono text-sm mt-auto">
