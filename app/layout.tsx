@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Space_Mono } from "next/font/google";
-import { SmoothScroller } from "./SmoothScroller";
 import "./globals.css";
 
 const spaceMono = Space_Mono({
@@ -28,7 +27,6 @@ export default function RootLayout({
       className={`${spaceMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-mono">
-        <SmoothScroller />
         {children}
       </body>
     </html>

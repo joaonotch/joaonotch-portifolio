@@ -45,29 +45,28 @@ interface StackItem {
 const stack: StackItem[] = [
   {
     name: "Javascript",
-    // Cor amarela oficial do JS: F7DF1E
     icon: "https://cdn.simpleicons.org/javascript/F7DF1E",
   },
   {
     name: "Typescript",
-    // Cor azul oficial do TS: 3178C6
     icon: "https://cdn.simpleicons.org/typescript/3178C6",
   },
   {
     name: "Node.js",
-    // Cor verde oficial do Node: 339933
     icon: "https://cdn.simpleicons.org/nodedotjs/339933",
   },
   {
     name: "SQLite",
-    // Cor azul oficial do SQLite: 003B57
     icon: "https://cdn.simpleicons.org/sqlite/003B57",
   },
   {
-    name: "React Native (TSX)",
-    // Cor azul claro oficial do React: 61DAFB
+    name: "React Native",
     icon: "https://cdn.simpleicons.org/react/61DAFB",
   },
+  {
+    name: "Git",
+    icon: "https://cdn.simpleicons.org/git",
+  }
 ];
 
 const contacts: LinkItem[] = [
@@ -97,12 +96,9 @@ const contacts: LinkItem[] = [
 // Componente do Card de Projeto com Borda Animada
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <li className="group relative overflow-hidden rounded-xl bg-[#30363d] p-[1px] hover:shadow-[0_0_20px_-5px_rgba(163,230,53,0.3)] transition-shadow duration-500">
-      {/* Efeito de Borda Animada (Conic Gradient Giratório) */}
-      <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#a3e635_0%,#30363d_50%,#a3e635_100%)] opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
-
+    <li className="group relative overflow-hidden rounded-xl bg-[#30363d] p-[1px] hover:bg-[#a3e635]/50 hover:shadow-[0_0_20px_-5px_rgba(163,230,53,0.3)] transition-all duration-300">
       {/* Container do Conteúdo (Máscara Ultra-Dark central) */}
-      <div className="relative z-10 flex flex-col bg-[#0d1117] rounded-xl p-4 md:p-5 gap-3 w-full h-full">
+      <div className="r'elative z-10 flex flex-col bg-[#0d1117] rounded-xl p-4 md:p-5 gap-3 w-full h-full">
         
         {/* Topo: Título e Data */}
         <div className="flex items-start justify-between gap-4">
@@ -202,13 +198,9 @@ export default function Home() {
         <section className="mb-24 flex flex-col md:flex-row gap-10 md:gap-12 items-center md:items-start">
           {/* Seção da Foto (Esquerda) */}
           <div className="flex flex-col items-center shrink-0">
-            <div className="relative w-32 h-32 md:w-40 md:h-40 flex items-center justify-center">
-              {/* Efeitos do anel giratório verde */}
-              <div className="absolute inset-0 rounded-full animate-spin [animation-duration:3s] bg-[conic-gradient(from_0deg,transparent_70%,#84cc16_100%)] opacity-70 blur-md transform-gpu will-change-transform"></div>
-              <div className="absolute inset-0 rounded-full animate-spin [animation-duration:3s] bg-[conic-gradient(from_0deg,transparent_70%,#84cc16_100%)] transform-gpu will-change-transform"></div>
-              
+            <div className="relative w-32 h-32 md:w-40 md:h-40">
               {/* Container da foto por cima do efeito */}
-              <div className="w-[calc(100%-6px)] h-[calc(100%-6px)] rounded-full overflow-hidden relative z-10 bg-[#0a0a0a]">
+              <div className="w-full h-full rounded-full overflow-hidden relative z-10 bg-[#0a0a0a] ring-2 ring-lime-500/50">
                 <img 
                   src="/joaonotch.jpeg" 
                   alt="Foto de perfil de João Victor" 
@@ -247,7 +239,7 @@ export default function Home() {
             </h1>
 
             <p className="text-lg text-white/60 leading-relaxed max-w-xl mx-auto md:mx-0 md:text-left text-pretty mb-8">
-              Desenvolvedor Back-End | tenho 16 anos. Focado em arquitetura escalável e impacto com propósito.
+              Desenvolvedor Back-End, 16 anos de idade, com foco em arquitetura escalável e desenvolvimento de soluções com propósito.
             </p>
 
             <div className="flex items-center justify-center md:justify-start gap-2 text-white/50 font-mono text-sm mt-auto">
